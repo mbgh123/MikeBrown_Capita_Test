@@ -6,9 +6,9 @@ namespace SkeletonCode.CurrencyConverter
 {
 	public class Converter
 	{
-        // Having a rate table with that gives you the option of a different conversion factor
+        // Having a rate table that gives you the option of a different conversion factor
         // dependent on direction seems like a reasonable idea.
-        // The next step would be to inject the rate table. That would the allow the rates
+        // The next step would be to inject the rate table. That would then allow the rates
         // to be changed, and allow the unit tests to setup appropriate rates.
         List<Rate> _rates;
 
