@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace SkeletonCode.ReversingString
 {
@@ -6,20 +7,19 @@ namespace SkeletonCode.ReversingString
 	{
 		public string Reverse(string input)
 		{
-
 			if (input == null)
 			{
 				return String.Empty;
 			}
 
-			string output = string.Empty;
+			StringBuilder sb = new StringBuilder();
 
 			for(int i = input.Length - 1; i >= 0; i--)
 			{
-				output += input[i];
+				sb.Append(input[i]);
 			}
 
-			return output;
+			return sb.ToString();
 		}
 	}
 }
