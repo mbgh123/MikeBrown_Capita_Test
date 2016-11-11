@@ -6,7 +6,7 @@ namespace SkeletonCode.CurrencyConverter
 {
 	public class Converter
 	{
-        // Having a rate table that gives you the option of a different conversion factor
+        // Having a rate table that gives you the option of a different exchange rate
         // dependent on direction seems like a reasonable idea.
         // The next step would be to inject the rate table. That would then allow the rates
         // to be changed, and allow the unit tests to setup appropriate rates.
@@ -16,11 +16,13 @@ namespace SkeletonCode.CurrencyConverter
         {
             _rates = new List<Rate>();
 
+            // symetric exchange rate
             _rates.Add(new Rate { FromISO = "USD", ToISO = "GBP", ConversionRate = 0.8m });
             _rates.Add(new Rate { FromISO = "GBP", ToISO = "USD", ConversionRate = 1.25m });
 
-            _rates.Add(new Rate { FromISO = "EUR", ToISO = "GBP", ConversionRate = 1.00m });
-            _rates.Add(new Rate { FromISO = "GBP", ToISO = "EUR", ConversionRate = 1.00m });
+            // asymetric exchange rate.
+            _rates.Add(new Rate { FromISO = "EUR", ToISO = "GBP", ConversionRate = 0.95m });
+            _rates.Add(new Rate { FromISO = "GBP", ToISO = "EUR", ConversionRate = 0.95m });
         }
 
 

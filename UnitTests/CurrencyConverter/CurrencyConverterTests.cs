@@ -33,6 +33,30 @@ namespace UnitTests.CurrencyConverter
 		}
 
         [Test]
+        public void ItShouldConvertFromEuroToPoundsCorrectly()
+        {
+            decimal euros = 1m;
+            decimal expectedAmountInPounds = 0.95m;
+
+            Converter converter = new Converter();
+            decimal result = converter.Convert("EUR", "GBP", euros);
+
+            Assert.AreEqual(expectedAmountInPounds, result);
+        }
+
+        [Test]
+        public void ItShouldConvertFromPoundsToEuroCorrectly()
+        {
+            decimal pounds = 1m;
+            decimal expectedAmountInEuros = 0.95m;
+
+            Converter converter = new Converter();
+            decimal result = converter.Convert("GBP", "EUR", pounds);
+
+            Assert.AreEqual(expectedAmountInEuros, result);
+        }
+
+        [Test]
         [ExpectedException(typeof(ArgumentException), ExpectedMessage = "inputCurrency is null. Please provide a valid ISO code")]
         public void AnExceptionShouldBeThrownOnNullInput()
         {
