@@ -31,7 +31,39 @@ namespace UnitTests.CardGame
 			CollectionAssert.AllItemsAreUnique(packOfCards);
 		}
 
-		[Test]
+        [Test]
+        public void ShufflesShouldNotRepeatPreviousShuffleOrders()
+        {
+            // We want to check that the shuffle will produce a different order on each call.
+            
+
+            IPackOfCardsCreator packOfCardsCreator = new PackOfCardsCreator();
+            IPackOfCards packOfCards = packOfCardsCreator.Create();
+
+            packOfCards.Shuffle();
+
+            // Save the id's from the first suffle
+            List<int> firstShuffleIids = new List<int>();
+            foreach (var item in packOfCards)
+            {
+                firstShuffleIids.Add(item.Id);
+            }
+
+            // Shuffle again
+            packOfCards.Shuffle();
+
+            // Save the id's from the second suffle
+            List<int> secondShuffleIids = new List<int>();
+            foreach (var item in packOfCards)
+            {
+                secondShuffleIids.Add(item.Id);
+            }
+
+
+            CollectionAssert.AreNotEqual(firstShuffleIids, secondShuffleIids);
+        }
+
+        [Test]
 		public void ThePackOfCardsShouldContainTheSameNumberOfCardsWhenShuffled()
 		{
 			IPackOfCardsCreator packOfCardsCreator = new PackOfCardsCreator();
