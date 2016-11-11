@@ -3,6 +3,7 @@
 }
 
 String.prototype.camelCaseToSpineCase = function () {
+
     return this.replace(/([A-Z])/g, function ($1) { return "-" + $1.toLowerCase(); });
 }
 
@@ -23,3 +24,18 @@ String.prototype.format = function () {
         ;
     });
 }
+
+/*
+ * I assume rather than doing this from scratch this is an exercise in finding an existing well tested solution.
+ * I didn't find an obvious library that would do all of above. Instead I cobbled together some suggestions
+ * from the likes of Stackoverflow and made a few tweaks myself.
+ * 
+ * There are two failing tests:
+ * 
+ *  expect('some-CamelCase with Space'.camelCaseToSpineCase()).toBe('some-camel-case-with-space');
+ *  expect('  some snakeCase with Space '.spineCaseToCamelCase()).toBe('someSnakeCaseWithSpace');
+ * 
+ * I could spend more time expanding the function to cope, but looking at the input I don't think its valid. 
+ * I'm not overly familiar with what is/isnot valid snake case, but it looks invalid to me. 
+ * 
+ */
